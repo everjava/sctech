@@ -1,7 +1,7 @@
 import sys
 sys.stdout.reconfigure(encoding='utf-8')
 
-from pipeline import OlistPipeline
+from funcoes import OlistPipeline
 
 class MainPipeline:
 
