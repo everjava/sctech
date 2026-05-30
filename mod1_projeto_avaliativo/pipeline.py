@@ -218,7 +218,7 @@ class OlistPipeline:
         for produto in self.products:
           self.determine_category_name(produto)
           self.determine_dimensions(produto)
-          return self.products
+        return self.products
       except Exception as e:
         logging.error(f"Ocorreu um erro: {e}")
         traceback.print_exc()
@@ -295,7 +295,7 @@ class OlistPipeline:
         for order in self.orders:
           self.determine_delivery_hypothesis(order)
           self.format_order_approved_at(order)
-          return self.orders
+        return self.orders
       except Exception as e:
         logging.error(f"Ocorreu um erro ao processar leitura do arquivo orders: {e}")
         traceback.print_exc()
@@ -355,7 +355,7 @@ class OlistPipeline:
       print(f"  Datas aprovação nulas                               : {self._stats['datas_aprovacao_nulas']}")
       
       print("\n HIPÓTESE DE NEGÓCIO")
-      print(f"  Datas de entrega nulas = cancelados?' → {hipotese_status}")
+      print(f"  Datas de entrega nulas = cancelados?' -> {hipotese_status}")
  
       print("\n RESUMO GERAL")
       print(f"  Total de linhas processadas : {self._stats['total_produtos_lidos'] + self._stats['total_pedidos_lidos']}") 
