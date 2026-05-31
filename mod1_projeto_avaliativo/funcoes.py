@@ -118,8 +118,6 @@ class OlistPipeline:
 
         # Contadores individuais para médias precisas (caso falte algum dado no CSV)
         count_w = count_l = count_h = count_wd = 0
-
-        # for linha in leitor_csv:
         # 1. Processa Peso
         if linha.get('product_weight_g'):
             try:
@@ -210,8 +208,6 @@ class OlistPipeline:
         Retorno:
             list[dict]: Lista de produtos sanitizados (exclui descartados).
       """
-
-
       try:
         self.products = self.read_csv(caminho_csv)
         self._stats["total_produtos_lidos"] = len(self.products)
@@ -248,8 +244,6 @@ class OlistPipeline:
         Parâmetros:
             order(pedido) da lista de orders(pedidos)
       """
-
-
       order_delivered_customer_date = order.get("order_delivered_customer_date", "").strip()
       status = order.get("order_status", "").strip().lower()
       if not order_delivered_customer_date:
@@ -337,7 +331,6 @@ class OlistPipeline:
       print(separador)
       print("\n PRODUTOS")
       print(f"  Total de produtos lidos                             : {self._stats['total_produtos_lidos']}")
-      # print(f"  Registros descartados                               : {self._stats['registros_descartados']}")
       print(f"  Registros válidos                                   : {total_produtos_validos}")
       print(f"  Categorias preenchidas                              : {self._stats['categorias_preenchidas']}")
       print(f"  Dimensões corrigidas (média)                        : {self._stats['dimensoes_corrigidas']}")
@@ -361,6 +354,5 @@ class OlistPipeline:
       print(f"  Total de linhas processadas : {self._stats['total_produtos_lidos'] + self._stats['total_pedidos_lidos']}") 
       print(f"  Total de nulos corrigidos   : {total_nulos_corrigidos}")
       print(f"  Total de cancelados         : {self._stats['cancelados_sem_entrega']}")
-      # print(f"  Base sanitizada?            : {'SIM' if self._stats['registros_descartados'] == 0 else '  Registros descartados presentes'}")
  
       print(separador)
